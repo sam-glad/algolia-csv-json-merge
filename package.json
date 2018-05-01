@@ -1,0 +1,10 @@
+{
+  "name": "algolia-csv-json-merger",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Sam Gladstone",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parser": "^1.12.1"
+  }
+}
