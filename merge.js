@@ -14,9 +14,8 @@ fs.createReadStream('restaurants_info.csv')
       if (matchingRestaurants.length > 1) {
         throw new Error(`Multiple restaurants found for objectID ${csvRestaurant.objectID}`);
       }
-
       const jsonRestaurant = matchingRestaurants[0];
-
+      
       jsonRestaurant.foodType = csvRestaurant.food_type;
       jsonRestaurant.starsCount = csvRestaurant.stars_count;
       jsonRestaurant.reviewsCount = csvRestaurant.reviews_count;
@@ -24,11 +23,10 @@ fs.createReadStream('restaurants_info.csv')
       jsonRestaurant.phoneNumber = csvRestaurant.phone_number;
       jsonRestaurant.priceRange = csvRestaurant.price_range;
       jsonRestaurant.diningStyle = csvRestaurant.dining_style;
+    }).on('end', () => {
+      prettifiedRestaurants = JSON.stringify(jsonRestaurants, null, 2);
+      fs.appendFile(`restaurants_${new Date().getTime()}.json`, prettifiedRestaurants, err => {
+        if (err) throw err;
+        console.log('New json file with full restaurant info created!');
+      });
     });
-
-prettifiedRestaurants = JSON.stringify(jsonRestaurants, null, 2);
-
-fs.appendFile(`restaurants_${process.hrtime()[1]}.json`, prettifiedRestaurants, err => {
-  if (err) throw err;
-  console.log('New json file with full restaurant info created!');
-});
