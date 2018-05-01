@@ -16,13 +16,13 @@ fs.createReadStream('restaurants_info.csv')
       }
       const jsonRestaurant = matchingRestaurants[0];
       
-      jsonRestaurant.foodType = csvRestaurant.food_type;
-      jsonRestaurant.starsCount = csvRestaurant.stars_count;
-      jsonRestaurant.reviewsCount = csvRestaurant.reviews_count;
+      jsonRestaurant.food_type = csvRestaurant.food_type;
+      jsonRestaurant.stars_count = csvRestaurant.stars_count;
+      jsonRestaurant.reviews_count = csvRestaurant.reviews_count;
       jsonRestaurant.neighborhood = csvRestaurant.neighborhood;
-      jsonRestaurant.phoneNumber = csvRestaurant.phone_number;
-      jsonRestaurant.priceRange = csvRestaurant.price_range;
-      jsonRestaurant.diningStyle = csvRestaurant.dining_style;
+      jsonRestaurant.phone_number = csvRestaurant.phone_number;
+      jsonRestaurant.price_range = csvRestaurant.price_range;
+      jsonRestaurant.dining_style = csvRestaurant.dining_style;
     }).on('end', () => {
       prettifiedRestaurants = JSON.stringify(jsonRestaurants, null, 2);
       fs.appendFile(`restaurants_${new Date().getTime()}.json`, prettifiedRestaurants, err => {
