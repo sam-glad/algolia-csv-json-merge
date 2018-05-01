@@ -17,7 +17,7 @@ fs.createReadStream('restaurants_info.csv')
       const jsonRestaurant = matchingRestaurants[0];
       
       jsonRestaurant.food_type = csvRestaurant.food_type;
-      jsonRestaurant.stars_count = csvRestaurant.stars_count;
+      jsonRestaurant.stars_count = parseFloat(csvRestaurant.stars_count);
       jsonRestaurant.reviews_count = csvRestaurant.reviews_count;
       jsonRestaurant.neighborhood = csvRestaurant.neighborhood;
       jsonRestaurant.phone_number = csvRestaurant.phone_number;
